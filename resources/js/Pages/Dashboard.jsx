@@ -1,6 +1,10 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-
+import styles from './Dashboard.module.css';
+import Rectangle from './../../../public/Rectangle 214.png';
+import Rectangle2 from './../../../public/Rectangle 220.png';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 export default function Dashboard() {
     return (
         <AuthenticatedLayout
@@ -13,14 +17,51 @@ export default function Dashboard() {
             <Head title="Dashboard" />
 
             <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                            You're logged in!
-                        </div>
+                <div className="mx-auto w-full sm:px-6 lg:px-8">
+                    <div  className={`${styles.card} overflow-hidden flex flex-row bg-white shadow-sm`}>
+                         <div className='flex flex-column' >
+                           <p className={`${styles.header} whitespace-nowrap`} >Hello Dilmi</p>    
+                        </div>   
+                        <img className="ml-auto" src={Rectangle}/>
+                        
                     </div>
                 </div>
-            </div>
+                <div className="mx-auto w-full  my-4 sm:px-6 lg:px-8">
+
+                <div style={{borderRadius:'30px',borderLeft:'none',borderRight:'none', borderTop:'none'}} className={` py-5 px-5 border-solid border-2 justify-between items-center border-black  flex flex-row bg-white shadow-sm`}>
+                   <p>End-Of-Day Summary</p>
+                   <div className='flex w-1/3 flex-col'>
+                   Date
+                       <input type='date'/>
+                   </div>
+                  </div>
+                  </div>
+
+                <div className="mx-auto w-full  my-4 sm:px-6 lg:px-8">
+ 
+                <div style={{borderRadius:'30px',borderLeft:'none',borderRight:'none'}} className={`   border-solid border-2 border-black  flex flex-col bg-white shadow-sm`}>
+
+            {[...Array(4)].map((_, i) => (
+                <div className="mx-auto w-auto my-4 sm:px-6 lg:px-8">
+                    <div className={`${styles.card} overflow-hidden p-4 border-solid border-2 border-black  flex flex-row bg-white shadow-sm`} style={{width:'60vw'}} >
+                      <img src={Rectangle2}/>
+                      <div className='flex mx-4 flex-col'>
+                        <div className='text-4xl'>Kurunagala To Colombo</div>   
+                        <div className='text-xl ml-3 '>Date: 31/10/2024</div>    
+                        <div className='text-xl ml-3'>Time :01.01.01 AM</div>    
+                         <div className='justify-between flex flex-row'>
+                            <button className='bg-black m-2 rounded-lg py-2 px-3 text-white'>View More </button>
+                            <div className='text-4xl font-bold '>RISK RIDE</div>   
+
+                         </div>
+                      </div>
+                    </div>
+                </div>
+            ))}
+                </div>
+                </div>
+                </div>
+
         </AuthenticatedLayout>
     );
 }

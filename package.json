@@ -20,6 +20,7 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "react-circular-progressbar": "^2.1.0",
         "react-d3-speedometer": "^2.2.1"
     }
 }

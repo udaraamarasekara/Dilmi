@@ -1,0 +1,22 @@
+.card{
+    width:90vw;
+    height:200px;
+    border-radius: 30px;
+}
+@media (min-width: 768px) { 
+    .card{
+        width:70vw
+    }
+
+}
+
+.header{
+    margin-top:10%;
+    margin-left:30%;
+    font-size: xx-large;
+    width:max-content;
+    background:linear-gradient(90deg, rgba(0,158,253,1) 0%, rgba(42,245,152,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}

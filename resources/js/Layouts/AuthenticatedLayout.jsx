@@ -14,8 +14,10 @@ export default function AuthenticatedLayout({ header, children }) {
         useState(false);
 
     return (
-        <div className="min-h-screen h-full m-0 flex flex-row bg-sky-50">
-            <nav className="border-b h-full flex flex-col min-h-screen w-1/5 border-gray-100 bg-white">
+        
+        <div className="h-full m-0 flex flex-row bg-sky-50">
+            <div className='flex-1 w-1/4'>
+            <nav className="border-b h-full  flex flex-col  border-gray-100 bg-white">
                 <div className="mx-auto flex grow px-4 sm:px-6 lg:px-8">
                     <div className="flex mt-5 h-full flex-col justify-between">
                         <div className="flex flex-col">
@@ -166,9 +168,15 @@ export default function AuthenticatedLayout({ header, children }) {
                     </div>
                   
                 </div>
-                <div className='flex my-3 hover:cursor-pointer hover:underline opacity-50 justify-center h-1/12'>
-                        Logout
-                    </div>
+               <div className='flex mt-32'>
+                    <a  href={route('profile.edit')} className='my-5 mx-5 hover:cursor-pointer bg-black text-white text-center  hover:underline opacity-100 w-1/3 justify-center h-1/12'>
+                       Profile
+                    </a> 
+                    <a href={route('logout')} className='my-5 mx-5 hover:cursor-pointer bg-black text-white text-center  hover:underline opacity-100 w-1/3 justify-center h-1/12'>
+                      Logout
+                    </a>
+                </div> 
+               
                 <div
                     className={
                         (showingNavigationDropdown ? 'block' : 'hidden') +
@@ -209,10 +217,10 @@ export default function AuthenticatedLayout({ header, children }) {
                     </div>
                 </div>
             </nav>
-
+            </div>
       
 
-            <main>{children}</main>
+            <main className='w-full flex justify-center'>{children}</main>
         </div>
     );
 }
