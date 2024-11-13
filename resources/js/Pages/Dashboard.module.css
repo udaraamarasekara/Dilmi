@@ -1,11 +1,12 @@
 .card{
-    width:90vw;
+    width:70vw;
     height:200px;
     border-radius: 30px;
 }
-@media (min-width: 768px) { 
+@media (max-width: 768px) { 
     .card{
-        width:70vw
+        width:max-content;
+        height:max-content
     }
 
 }

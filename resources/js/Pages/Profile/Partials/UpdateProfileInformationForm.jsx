@@ -1,3 +1,4 @@
+import Dropdown from '@/Components/Dropdown';
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
@@ -16,6 +17,9 @@ export default function UpdateProfileInformation({
         useForm({
             name: user.name,
             email: user.email,
+            address:user.address,
+            birthday:user.birthday,
+            gender:user.gender
         });
 
     const submit = (e) => {
@@ -36,8 +40,9 @@ export default function UpdateProfileInformation({
                 </p>
             </header>
 
-            <form onSubmit={submit} className="mt-6 space-y-6">
-                <div className=''>
+            <form onSubmit={submit} className="mt-6 space-y-6 w-full">
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-2 w-full'>
+                <div>
                     <InputLabel htmlFor="name" value="Name" />
 
                     <TextInput
@@ -63,35 +68,59 @@ export default function UpdateProfileInformation({
                         value={data.email}
                         onChange={(e) => setData('email', e.target.value)}
                         required
-                        autoComplete="username"
+                        autoComplete="email"
                     />
 
                     <InputError className="mt-2" message={errors.email} />
                 </div>
+                <div>
+                    <InputLabel htmlFor="address" value="Address" />
 
-                {mustVerifyEmail && user.email_verified_at === null && (
-                    <div>
-                        <p className="mt-2 text-sm text-gray-800">
-                            Your email address is unverified.
-                            <Link
-                                href={route('verification.send')}
-                                method="post"
-                                as="button"
-                                className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                            >
-                                Click here to re-send the verification email.
-                            </Link>
-                        </p>
+                    <TextInput
+                        id="address"
+                        type="text"
+                        className="mt-1 block w-full"
+                        value={data.address}
+                        onChange={(e) => setData('address', e.target.value)}
+                        required
+                        autoComplete="address"
+                    />
 
-                        {status === 'verification-link-sent' && (
-                            <div className="mt-2 text-sm font-medium text-green-600">
-                                A new verification link has been sent to your
-                                email address.
-                            </div>
-                        )}
-                    </div>
-                )}
+                    <InputError className="mt-2" message={errors.address} />
+                </div>
+                <div>
+                    <InputLabel htmlFor="birthday" value="Birthday" />
 
+                    <TextInput
+                        id="birthday"
+                        type="date"
+                        className="mt-1 block w-full"
+                        value={data.birthday}
+                        onChange={(e) => setData('birthday', e.target.value)}
+                        required
+                        autoComplete="birthday"
+                    />
+
+                    <InputError className="mt-2" message={errors.birthday} />
+                </div>
+                <div>
+                    <InputLabel htmlFor="gender" value="Gender" />
+
+                    <select
+                        id="gender"
+                        type="gender"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                        value={data.gender}
+                        onChange={(e) => setData('gender', e.target.value)}
+                        required
+                    >
+                        <option value='male'>Male</option>
+                        <option value='female'>Female</option>
+                    </select>
+                    <InputError className="mt-2" message={errors.gender} />
+                </div>
+                </div> 
+ 
                 <div className="flex items-center gap-4">
                     <PrimaryButton disabled={processing}>Save</PrimaryButton>
 

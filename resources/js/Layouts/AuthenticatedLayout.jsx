@@ -15,9 +15,47 @@ export default function AuthenticatedLayout({ header, children }) {
 
     return (
         
-        <div className="h-full m-0 flex flex-row bg-sky-50">
-            <div className='flex-1 w-1/4'>
-            <nav className="border-b h-full  flex flex-col  border-gray-100 bg-white">
+        <div className="min-h-full min-w-full w-max md:h-full md:w-full m-0 flex  flex-col md:flex-row bg-sky-50">
+               <button
+                                onClick={() =>
+                                    setShowingNavigationDropdown(
+                                        (previousState) => !previousState,
+                                    )
+                                }
+                                className="inline-flex items-center md:hidden justify-start p-2 bg-black text-white-400 transition duration-150 ease-in-out  "
+                            >
+                                <svg
+                                    className="h-6 w-6"
+                                    stroke="white"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        className={
+                                            !showingNavigationDropdown
+                                                ? 'inline-flex'
+                                                : 'hidden'
+                                        }
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M4 6h16M4 12h16M4 18h16"
+                                    />
+                                    <path
+                                        className={
+                                            showingNavigationDropdown
+                                                ? 'inline-flex'
+                                                : 'hidden'
+                                        }
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    />
+                                </svg>
+                            </button>
+            <div className='flex-1 w-full md:w-1/4'>
+            <nav className={`border-b h-full  flex flex-col ${showingNavigationDropdown?'block':'hidden'} md:block border-gray-100 bg-white`}>
                 <div className="mx-auto flex grow px-4 sm:px-6 lg:px-8">
                     <div className="flex mt-5 h-full flex-col justify-between">
                         <div className="flex flex-col">
@@ -125,50 +163,10 @@ export default function AuthenticatedLayout({ header, children }) {
                             </div>
                            
                           </SpeedCard>
-                        <div className="-me-2 flex items-center sm:hidden">
-                            <button
-                                onClick={() =>
-                                    setShowingNavigationDropdown(
-                                        (previousState) => !previousState,
-                                    )
-                                }
-                                className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
-                            >
-                                <svg
-                                    className="h-6 w-6"
-                                    stroke="currentColor"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        className={
-                                            !showingNavigationDropdown
-                                                ? 'inline-flex'
-                                                : 'hidden'
-                                        }
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M4 6h16M4 12h16M4 18h16"
-                                    />
-                                    <path
-                                        className={
-                                            showingNavigationDropdown
-                                                ? 'inline-flex'
-                                                : 'hidden'
-                                        }
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M6 18L18 6M6 6l12 12"
-                                    />
-                                </svg>
-                            </button>
-                        </div>
                     </div>
                   
                 </div>
-               <div className='flex mt-32'>
+               <div className='flex justify-between mt-32'>
                     <a  href={route('profile.edit')} className='my-5 mx-5 hover:cursor-pointer bg-black text-white text-center  hover:underline opacity-100 w-1/3 justify-center h-1/12'>
                        Profile
                     </a> 
@@ -178,9 +176,7 @@ export default function AuthenticatedLayout({ header, children }) {
                 </div> 
                
                 <div
-                    className={
-                        (showingNavigationDropdown ? 'block' : 'hidden') +
-                        ' sm:hidden'
+                    className={                        'hidden'
                     }
                 >
                     <div className="space-y-1 pb-3 pt-2">

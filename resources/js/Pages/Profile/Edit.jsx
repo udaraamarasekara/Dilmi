@@ -21,15 +21,15 @@ export default function Edit({ mustVerifyEmail, status }) {
                         <UpdateProfileInformationForm
                             mustVerifyEmail={mustVerifyEmail}
                             status={status}
-                            className="max-w-xl"
+                            className="max-full"
                         />
                     </div>
-                    <div className='flex flex-row'>
-                        <div className="bg-white p-4 w-1/2 md:mr-4 shadow sm:rounded-lg sm:p-8">
+                    <div className='grid grid-cols-1 gap-5 md:grid-cols-2'>
+                        <div className="bg-white p-4 w-full md:mr-4 shadow sm:rounded-lg sm:p-8">
                             <UpdatePasswordForm className="max-w-xl" />
                         </div>
 
-                        <div className="bg-white p-4 w-1/2 md:ml-4 shadow sm:rounded-lg sm:p-8">
+                        <div className="bg-white p-4 w-full md:ml-4 shadow sm:rounded-lg sm:p-8">
                             <DeleteUserForm className="max-w-xl" />
                         </div>
                     </div>
