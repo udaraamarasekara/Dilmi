@@ -15,7 +15,7 @@ export default function AuthenticatedLayout({ header, children }) {
 
     return (
         
-        <div className="min-h-full min-w-full w-max md:h-full md:w-full m-0 flex  flex-col md:flex-row bg-sky-50">
+        <div className="min-h-screen min-w-full w-max md:h-full md:w-full m-0 flex  flex-col md:flex-row bg-sky-50">
                <button
                                 onClick={() =>
                                     setShowingNavigationDropdown(
@@ -53,7 +53,10 @@ export default function AuthenticatedLayout({ header, children }) {
                                         d="M6 18L18 6M6 6l12 12"
                                     />
                                 </svg>
+          
                             </button>
+                            {!route().current('lastTrip') &&
+
             <div className='flex-1 w-full md:w-1/4'>
             <nav className={`border-b h-full  flex flex-col ${showingNavigationDropdown?'block':'hidden'} md:block border-gray-100 bg-white`}>
                 <div className="mx-auto flex grow px-4 sm:px-6 lg:px-8">
@@ -166,13 +169,19 @@ export default function AuthenticatedLayout({ header, children }) {
                     </div>
                   
                 </div>
-               <div className='flex justify-between mt-32'>
-                    <a  href={route('profile.edit')} className='my-5 mx-5 hover:cursor-pointer bg-black text-white text-center  hover:underline opacity-100 w-1/3 justify-center h-1/12'>
+                <div className='flex justify-between mt-3'>
+
+                <Link  href={route('lastTrip')} className='mb-2 mt-32 mx-5 py-2 rounded-lg hover:cursor-pointer bg-black text-white text-center  hover:underline opacity-100 w-full justify-center h-1/12'>
+                       Last Trip
+                    </Link> 
+                 </div>   
+               <div className='flex justify-between '>
+                    <Link  href={route('profile.edit')} className='my-5 mx-5 py-2 rounded-lg hover:cursor-pointer bg-black text-white text-center  hover:underline opacity-100 w-1/3 justify-center h-1/12'>
                        Profile
-                    </a> 
-                    <a href={route('logout')} className='my-5 mx-5 hover:cursor-pointer bg-black text-white text-center  hover:underline opacity-100 w-1/3 justify-center h-1/12'>
+                    </Link> 
+                    <Link href={route('logout')} className='my-5 mx-5 py-2 rounded-lg hover:cursor-pointer bg-black text-white text-center  hover:underline opacity-100 w-1/3 justify-center h-1/12'>
                       Logout
-                    </a>
+                    </Link>
                 </div> 
                
                 <div
@@ -213,7 +222,7 @@ export default function AuthenticatedLayout({ header, children }) {
                     </div>
                 </div>
             </nav>
-            </div>
+            </div>}
       
 
             <main className='w-full flex justify-center'>{children}</main>
