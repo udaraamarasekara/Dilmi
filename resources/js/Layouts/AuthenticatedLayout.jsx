@@ -179,7 +179,7 @@ export default function AuthenticatedLayout({ header, children }) {
                     <Link  href={route('profile.edit')} className='my-5 mx-5 py-2 rounded-lg hover:cursor-pointer bg-black text-white text-center  hover:underline opacity-100 w-1/3 justify-center h-1/12'>
                        Profile
                     </Link> 
-                    <Link href={route('logout')} className='my-5 mx-5 py-2 rounded-lg hover:cursor-pointer bg-black text-white text-center  hover:underline opacity-100 w-1/3 justify-center h-1/12'>
+                    <Link method={'post'} href={route('logout')} className='my-5 mx-5 py-2 rounded-lg hover:cursor-pointer bg-black text-white text-center  hover:underline opacity-100 w-1/3 justify-center h-1/12'>
                       Logout
                     </Link>
                 </div> 
